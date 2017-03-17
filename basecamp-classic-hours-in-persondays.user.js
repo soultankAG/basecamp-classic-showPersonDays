@@ -28,7 +28,7 @@ console.log("daysWorkedTwoDecimals: "+ daysWorkedTwoDecimals);
 
 var daysWorkedCell = document.createElement('td');
 
-var textDaysTotal = daysWorkedTwoDecimals.toString() +  " (Tage)";
+var textDaysTotal = "(" + daysWorkedTwoDecimals.toString() +  " Tage)";
 
 console.log("textDaysTotal: " + textDaysTotal);
 
