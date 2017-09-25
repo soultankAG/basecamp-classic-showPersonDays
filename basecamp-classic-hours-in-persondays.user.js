@@ -8,15 +8,17 @@
 // @grant       GM_log
 // ==/UserScript==
 
-
 console.log("test");
 
-//Diese Funktion zeigt neben den Stunden die Zeit in Tagen an
-//https://stackoverflow.com/questions/8281441/fire-greasemonkey-script-on-ajax-request/8283815#8283815
+//configuration: how many hours does a person day have?
+var hoursInPersonDay = 8;
+
+//----START Für Tab "Aufgaben"
+//Dieser Bereich zeigt im neben den Stunden die Zeit in Tagen an
+
 function calculatePersonDaysForCurrentTodo (jNode) {
 
     //***** Hier wird dann aus den Stunden Tage berechnet *****
-    var hoursInPersonDay = 8;
     var targetDiv = document.getElementsByClassName("total").item(0);
     var taskHours = targetDiv.firstElementChild.innerHTML;
     var hoursString = taskHours.replace(',', '.');
@@ -28,17 +30,17 @@ function calculatePersonDaysForCurrentTodo (jNode) {
     var textnode = document.createTextNode(textDaysTotal);
     daysWorkedText.appendChild(textnode);
     targetDiv.insertBefore(textnode, targetDiv.childNodes[3]);
-    //
 }
 
 //Diese Funktion wartet darauf, dass ein div mit class "item_time_tracker" erscheint und ruft dann calculatePersonDaysForCurrentTodo auf
+//Hier die Idee und Dokumentation zum waitForKeyElements: https://stackoverflow.com/questions/8281441/fire-greasemonkey-script-on-ajax-request/8283815#8283815
 waitForKeyElements ("div.item_time_tracker", calculatePersonDaysForCurrentTodo);
 
-
-//configuration: how many hours does a person day have?
-var hoursInPersonDay = 8;
+//----ENDE Für Tab "Aufgaben"
 
 
+//----START Für Tab "Zeit"
+//----Dieser Bereich zeigt beim Total unten neben den Stunden die Zeit in Tagen an
 var hoursWorkedCell = document.getElementById('hours_subtotal');
 console.log("hoursWorkedCell="+ hoursWorkedCell.innerHTML);
 var hoursWorkedString = hoursWorkedCell.innerHTML.replace(',', '.');
@@ -68,3 +70,5 @@ daysWorkedCell.setAttribute("class","hours");
 var nextSiblingOfHoursWorkedCell = hoursWorkedCell.nextSibling;
 
 hoursWorkedCell.parentNode.insertBefore(daysWorkedCell, nextSiblingOfHoursWorkedCell);
+
+//----ENDE Für Tab "Zeit"
