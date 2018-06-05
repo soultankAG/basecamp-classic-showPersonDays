@@ -24,10 +24,8 @@ function calculatePersonDaysForCurrentTodo (jNode) {
     var hoursWorked = parseFloat(hoursString);
     var daysWorked = hoursWorked / hoursInPersonDay;
     var daysWorkedTwoDecimals = daysWorked.toFixed(2);
-    var textDaysTotal = ("(" + daysWorkedTwoDecimals.toString() + " Tage)");
-    var daysWorkedText = document.createElement("A");
+    var textDaysTotal = ("(" + daysWorkedTwoDecimals.toString() + " Tage) ");
     var textnode = document.createTextNode(textDaysTotal);
-    daysWorkedText.appendChild(textnode);
     targetDiv.insertBefore(textnode, targetNode);
 }
 
