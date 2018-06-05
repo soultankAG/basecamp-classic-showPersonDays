@@ -17,9 +17,6 @@ var hoursInPersonDay = 8;
 //Dieser Bereich zeigt im neben den Stunden die Zeit in Tagen an
 
 function calculatePersonDaysForCurrentTodo (jNode) {
-
-    //***** Hier wird dann aus den Stunden, Tage berechnet *****
-        
     var targetDiv = jNode[0].childNodes[3].childNodes[3];
     var targetNode = targetDiv.childNodes[0];
     var taskHours = jNode[0].childNodes[3].childNodes[1].innerText;
@@ -32,7 +29,7 @@ function calculatePersonDaysForCurrentTodo (jNode) {
     var textnode = document.createTextNode(textDaysTotal);
     daysWorkedText.appendChild(textnode);
     targetDiv.insertBefore(textnode, targetNode);
-  }
+}
 
 //Diese Funktion wartet darauf, dass ein div mit class "item_time_tracker" erscheint und ruft dann calculatePersonDaysForCurrentTodo auf
 //Hier die Idee und Dokumentation zum waitForKeyElements: https://stackoverflow.com/questions/8281441/fire-greasemonkey-script-on-ajax-request/8283815#8283815
